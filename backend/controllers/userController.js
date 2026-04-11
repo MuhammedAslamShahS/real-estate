@@ -133,4 +133,49 @@ const getUserProfile = async (req, res) => {
     }
 };
 
-export { registerUser, loginUser, getUserProfile };
+const saveProperty = async (req, res) => {
+    try {
+        const user = req.user;
+        const propertyId = req.params.propertyId;
+
+        // save property
+        if (user.savedProperties.includes(propertyId)) {
+            return res.status(400).json({
+                success: false,
+                message: "Property already saved",
+            });
+        }
+
+        user.savedProperties.push(propertyId);
+        await user.save();
+
+        res.status(200).json({
+            success: true,
+            message: "Property saved successfully",
+        });
+    } catch (error) {
+        res.status(500).json({
+            success: false,
+            message: "Error saving property",
+        });
+    }
+};
+
+// Get saved properties
+const getSavedProperties = async (req, res) => {
+    try {
+        const user = await User.findById(req.user._id).populate("savedProperties");
+
+        res.status(200).json({
+            success: true,
+            data: user.savedProperties,
+        });
+    } catch (error) {
+        res.status(500).json({
+            success: false,
+            message: "Error fetching saved properties",
+        });
+    }
+};
+
+export { registerUser, loginUser, getUserProfile, saveProperty, getSavedProperties };

@@ -25,6 +25,16 @@ const propertySchema = new mongoose.Schema(
             required: true,
             trim: true,
         },
+        category: {
+            type: String,
+            enum: ["Villa", "Apartment", "House", "Land", "Commercial"],
+            required: true,
+        },
+        type: {
+            type: String,
+            enum: ["Sale", "Rent", "Lease"],
+            required: true,
+        },
     },
     {
         timestamps: true,

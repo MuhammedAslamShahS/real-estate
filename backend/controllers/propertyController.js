@@ -3,9 +3,9 @@ import Property from "../models/Property.js";
 // Add Property
 const addProperty = async (req, res) => {
     try {
-        const { name, location, price, details } = req.body;
+        const { name, location, price, details, category, type } = req.body;
 
-        if (!name || !location || !price || !details) {
+        if (!name || !location || !price || !details || !category || !type || !req.file) {
             return res.status(400).json({
                 success: false,
                 message: "All fields including image are required",
@@ -17,6 +17,8 @@ const addProperty = async (req, res) => {
             location,
             price,
             details,
+            category,
+            type,
             image: req.file.filename,
         });
 
@@ -81,7 +83,7 @@ const getSingleProperty = async (req, res) => {
 
 const updateProperty = async (req, res) => {
     try {
-        const { name, location, price, details } = req.body;
+        const { name, location, price, details, category, type } = req.body;
 
         const property = await Property.findById(req.params.id);
 
@@ -96,6 +98,8 @@ const updateProperty = async (req, res) => {
         property.location = location || property.location;
         property.price = price || property.price;
         property.details = details || property.details;
+        property.category = category || property.category;
+        property.type = type || property.type;
 
         if (req.file) {
             property.image = req.file.filename;
