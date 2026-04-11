@@ -4,19 +4,38 @@ import Properties from "./pages/Properties";
 import PropertyDetails from "./pages/PropertyDetails";
 import Register from "./pages/Register";
 import Login from "./pages/Login";
+import Profile from "./pages/Profile";
+import ProtectedRoute from "./components/ProtectedRoute";
 
 function App() {
-    return (
-        <BrowserRouter>
-            <Routes>
-                <Route path="/" element={<Home />} />
-                <Route path="/properties" element={<Properties />} />
-                <Route path="/property/:id" element={<PropertyDetails />} />
-                <Route path="/register" element={<Register />} />
-                <Route path="/login" element={<Login />} />
-            </Routes>
-        </BrowserRouter>
-    );
+  return (
+    <BrowserRouter>
+      <Routes>
+        <Route path="/" element={<Home />} />
+        <Route path="/properties" element={<Properties />} />
+        <Route path="/register" element={<Register />} />
+        <Route path="/login" element={<Login />} />
+
+        <Route
+          path="/property/:id"
+          element={
+            <ProtectedRoute>
+              <PropertyDetails />
+            </ProtectedRoute>
+          }
+        />
+
+        <Route
+          path="/profile"
+          element={
+            <ProtectedRoute>
+              <Profile />
+            </ProtectedRoute>
+          }
+        />
+      </Routes>
+    </BrowserRouter>
+  );
 }
 
 export default App;

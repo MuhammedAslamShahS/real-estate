@@ -1,7 +1,7 @@
 import jwt from "jsonwebtoken";
 import User from "../models/User.js";
 
-const userAuth = async (req, res) => {
+const userAuth = async (req, res, next) => {
     try {
         const token = req.headers.authorization;
 
@@ -27,7 +27,7 @@ const userAuth = async (req, res) => {
 
         next();
     } catch (error) {
-        return res.status(404).json({
+        return res.status(401).json({
             success: false,
             message: "Invalid token",
         });
