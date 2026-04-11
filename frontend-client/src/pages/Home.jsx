@@ -1,12 +1,20 @@
-import Footer from "../components/Footer";
 import Navbar from "../components/Navbar";
+import Footer from "../components/Footer";
+
+import HeroSection from "../components/home/HeroSection";
+import FeaturedProperties from "../components/home/FeaturedProperties";
+import CategorySection from "../components/home/CategorySection";
 
 const Home = () => {
   return (
-    <div>
+    <div className="min-h-screen bg-gray-100">
       <Navbar />
-      <h1>Home Page</h1>
-      <Footer/>
+
+      <HeroSection />
+      <FeaturedProperties />
+      <CategorySection />
+
+      <Footer />
     </div>
   );
 };
