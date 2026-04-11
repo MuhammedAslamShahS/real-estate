@@ -1,69 +1,64 @@
-import { Link } from "react-router-dom";
+import { NavLink, useNavigate } from "react-router-dom";
+
+const navItems = [
+  { name: "Add Property", path: "/add-property", icon: "➕", color: "bg-blue-600 hover:bg-blue-500", desc: "Quickly add new listings" },
+  { name: "View Properties", path: "/properties", icon: "📋", color: "bg-green-600 hover:bg-green-500", desc: "View, edit or delete properties" },
+];
 
 const Dashboard = () => {
+  const navigate = useNavigate();
+
+  const handleLogout = () => {
+    localStorage.removeItem("token");
+    navigate("/");
+  };
+
+  const sidebarLinkClass = ({ isActive }) =>
+    `p-2 rounded flex items-center gap-2 ${
+      isActive ? "bg-blue-600" : "bg-gray-800 hover:bg-gray-700"
+    }`;
+
   return (
-    <div className="flex h-screen">
+    <div className="flex min-h-screen">
+      <aside className="w-[240px] bg-gray-900 text-white p-5 flex flex-col justify-between">
+        <div>
+          <h2 className="text-xl font-bold mb-6">Admin Panel</h2>
 
-      {/* Sidebar */}
-      <div className="w-[220px] bg-gray-900 text-white p-5">
-        <h2 className="text-xl font-bold mb-6">Admin Panel</h2>
+          <nav className="flex flex-col gap-3">
+            {navItems.map(({ name, path, icon }) => (
+              <NavLink key={path} to={path} className={sidebarLinkClass}>
+                <span>{icon}</span>
+                <span>{name}</span>
+              </NavLink>
+            ))}
+          </nav>
+        </div>
 
-        <nav className="flex flex-col gap-3">
-          <Link
-            to="/add-property"
-            className="bg-gray-800 p-2 rounded hover:bg-gray-700"
-          >
-            ➕ Add Property
-          </Link>
-
-          <Link
-            to="/properties"
-            className="bg-gray-800 p-2 rounded hover:bg-gray-700"
-          >
-            📋 View Properties
-          </Link>
-        </nav>
-
-        {/* Logout */}
         <button
-          onClick={() => {
-            localStorage.removeItem("token");
-            window.location.href = "/";
-          }}
-          className="mt-10 bg-red-600 w-full p-2 rounded hover:bg-red-500"
+          onClick={handleLogout}
+          className="bg-red-600 w-full p-2 rounded hover:bg-red-500"
         >
           Logout
         </button>
-      </div>
+      </aside>
 
-      {/* Main Content */}
-      <div className="flex-1 p-6 bg-gray-100">
-        <h1 className="text-2xl font-bold mb-4">
-          Dashboard
-        </h1>
+      <main className="flex-1 p-8 bg-gray-100">
+        <h1 className="text-2xl font-bold mb-2">Dashboard</h1>
+        <p className="text-gray-600 mb-6">Welcome Admin 👋</p>
 
-        <p className="text-gray-600">
-          Welcome Admin 👋
-        </p>
-
-        {/* Quick Actions */}
-        <div className="grid grid-cols-2 gap-4 mt-6">
-          <Link
-            to="/add-property"
-            className="bg-blue-600 text-white p-5 rounded shadow hover:bg-blue-500"
-          >
-            Add New Property
-          </Link>
-
-          <Link
-            to="/properties"
-            className="bg-green-600 text-white p-5 rounded shadow hover:bg-green-500"
-          >
-            Manage Properties
-          </Link>
+        <div className="grid grid-cols-1 sm:grid-cols-2 gap-6">
+          {navItems.map(({ name, path, color, desc }) => (
+            <NavLink
+              key={path}
+              to={path}
+              className={`${color} text-white p-6 rounded-xl shadow transition`}
+            >
+              <h3 className="text-lg font-semibold">{name}</h3>
+              <p className="text-sm mt-2 opacity-80">{desc}</p>
+            </NavLink>
+          ))}
         </div>
-      </div>
-
+      </main>
     </div>
   );
 };
