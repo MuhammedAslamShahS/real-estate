@@ -7,6 +7,8 @@ import Login from "./pages/Login";
 import Profile from "./pages/Profile";
 import ProtectedRoute from "./components/ProtectedRoute";
 import Categories from "./pages/Categories";
+import About from "./pages/About";
+import Contact from "./pages/Contact";
 
 function App() {
     return (
@@ -17,6 +19,8 @@ function App() {
                 <Route path="/register" element={<Register />} />
                 <Route path="/login" element={<Login />} />
                 <Route path="/categories" element={<Categories />} />
+                <Route path="/about" element={<About />} />
+                <Route path="/contact" element={<Contact />} />
 
                 <Route
                     path="/property/:id"
