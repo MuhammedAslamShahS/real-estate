@@ -1,12 +1,14 @@
 import { useEffect, useState } from "react";
+import { Link, useSearchParams } from "react-router-dom";
 import API from "../api/axios.js";
 import Navbar from "../components/Navbar";
-import { Link } from "react-router-dom";
 
 const Properties = () => {
   const [properties, setProperties] = useState([]);
+  const [searchParams] = useSearchParams();
+
   const [filter, setFilter] = useState({
-    category: "",
+    category: searchParams.get("category") || "",
     type: "",
   });
 
@@ -23,7 +25,13 @@ const Properties = () => {
     fetchProperties();
   }, []);
 
-  // 🔥 Filter logic
+  useEffect(() => {
+    setFilter((prev) => ({
+      ...prev,
+      category: searchParams.get("category") || "",
+    }));
+  }, [searchParams]);
+
   const filtered = properties.filter((p) => {
     return (
       (filter.category ? p.category === filter.category : true) &&
@@ -32,19 +40,19 @@ const Properties = () => {
   });
 
   return (
-    <div>
+    <div className="min-h-screen bg-gray-100">
       <Navbar />
 
       <div className="max-w-6xl mx-auto p-6">
         <h1 className="text-2xl font-bold mb-4">Properties</h1>
 
-        {/* Filters */}
         <div className="flex gap-4 mb-6">
           <select
+            value={filter.category}
             onChange={(e) =>
               setFilter({ ...filter, category: e.target.value })
             }
-            className="border p-2"
+            className="border p-2 rounded"
           >
             <option value="">All Categories</option>
             <option value="villa">Villa</option>
@@ -55,10 +63,11 @@ const Properties = () => {
           </select>
 
           <select
+            value={filter.type}
             onChange={(e) =>
               setFilter({ ...filter, type: e.target.value })
             }
-            className="border p-2"
+            className="border p-2 rounded"
           >
             <option value="">All Types</option>
             <option value="sale">Sale</option>
@@ -67,23 +76,31 @@ const Properties = () => {
           </select>
         </div>
 
-        {/* Properties Grid */}
         <div className="grid grid-cols-1 md:grid-cols-3 gap-4">
           {filtered.map((p) => (
-            <div key={p._id} className="border rounded p-3">
+            <div key={p._id} className="bg-white rounded shadow p-3">
               <img
                 src={`http://localhost:5000/uploads/${p.image}`}
-                alt=""
-                className="w-full h-40 object-cover"
+                alt={p.name}
+                className="w-full h-40 object-cover rounded"
               />
 
               <h3 className="font-semibold mt-2">{p.name}</h3>
               <p>{p.location}</p>
               <p className="text-blue-600">₹ {p.price}</p>
 
+              <div className="flex gap-2 mt-2 text-sm">
+                <span className="bg-gray-200 px-2 py-1 rounded">
+                  {p.category}
+                </span>
+                <span className="bg-blue-100 text-blue-700 px-2 py-1 rounded">
+                  {p.type}
+                </span>
+              </div>
+
               <Link
                 to={`/property/${p._id}`}
-                className="text-blue-500 mt-2 inline-block"
+                className="text-blue-500 mt-3 inline-block"
               >
                 View Details
               </Link>

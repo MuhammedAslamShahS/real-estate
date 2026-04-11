@@ -9,7 +9,7 @@ const Profile = () => {
   const [saved, setSaved] = useState([]);
   const [enquiries, setEnquiries] = useState([]);
 
-  // 🔥 Fetch saved properties
+  // Fetch saved properties
   const fetchSaved = async () => {
     try {
       const res = await API.get("/users/saved-properties");
@@ -19,7 +19,7 @@ const Profile = () => {
     }
   };
 
-  // 🔥 Fetch enquiries
+  // Fetch enquiries
   const fetchEnquiries = async () => {
     try {
       const res = await API.get("/enquiries/my");
@@ -75,7 +75,7 @@ const Profile = () => {
           )}
         </div>
 
-        {/* 🔥 My Enquiries */}
+        {/*  My Enquiries */}
         <div>
           <h2 className="text-xl font-semibold mb-4">
             My Enquiries

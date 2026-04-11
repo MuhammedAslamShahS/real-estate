@@ -1,6 +1,7 @@
 import { Link } from "react-router-dom";
 import { useAuth } from "../context/useAuth.jsx";
 
+
 const Navbar = () => {
   const { user, logout } = useAuth();
 
@@ -14,6 +15,7 @@ const Navbar = () => {
         <nav className="flex items-center gap-6">
           <Link to="/">Home</Link>
           <Link to="/properties">Properties</Link>
+          <Link to="/categories">Categories</Link>
 
           {!user ? (
             <>
