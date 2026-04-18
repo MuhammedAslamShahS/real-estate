@@ -5,12 +5,28 @@ const initialFormState = {
   location: "",
   price: "",
   details: "",
+  category: "",
+  type: "",
 };
 
 const fields = [
   { label: "Property Name", name: "name" },
   { label: "Location", name: "location" },
   { label: "Price", name: "price" },
+];
+
+const categories = [
+  { label: "Villa", value: "villa" },
+  { label: "Apartment", value: "apartment" },
+  { label: "House", value: "house" },
+  { label: "Land", value: "land" },
+  { label: "Commercial", value: "commercial" },
+];
+
+const propertyTypes = [
+  { label: "Sale", value: "sale" },
+  { label: "Rent", value: "rent" },
+  { label: "Lease", value: "lease" },
 ];
 
 const PropertyForm = ({
@@ -67,6 +83,42 @@ const PropertyForm = ({
             />
           </div>
         ))}
+
+        <div className="mb-4">
+          <label className="block mb-2 font-medium">Category</label>
+          <select
+            name="category"
+            value={form.category}
+            onChange={handleChange}
+            className="w-full border rounded-lg p-3 outline-none focus:ring-2 focus:ring-blue-500"
+            required
+          >
+            <option value="">Select Category</option>
+            {categories.map((category) => (
+              <option key={category.value} value={category.value}>
+                {category.label}
+              </option>
+            ))}
+          </select>
+        </div>
+
+        <div className="mb-4">
+          <label className="block mb-2 font-medium">Type</label>
+          <select
+            name="type"
+            value={form.type}
+            onChange={handleChange}
+            className="w-full border rounded-lg p-3 outline-none focus:ring-2 focus:ring-blue-500"
+            required
+          >
+            <option value="">Select Type</option>
+            {propertyTypes.map((type) => (
+              <option key={type.value} value={type.value}>
+                {type.label}
+              </option>
+            ))}
+          </select>
+        </div>
 
         <div className="mb-4">
           <label className="block mb-2 font-medium">Details</label>
