@@ -12,7 +12,7 @@ const initialFormState = {
 const fields = [
   { label: "Property Name", name: "name" },
   { label: "Location", name: "location" },
-  { label: "Price", name: "price" },
+  { label: "Price", name: "price", type: "number" },
 ];
 
 const categories = [
@@ -74,7 +74,7 @@ const PropertyForm = ({
           <div key={field.name} className="mb-4">
             <label className="block mb-2 font-medium">{field.label}</label>
             <input
-              type="text"
+              type={field.type || "text"}
               name={field.name}
               value={form[field.name]}
               onChange={handleChange}
