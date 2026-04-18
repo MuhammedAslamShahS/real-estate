@@ -4,6 +4,7 @@ import { Link } from "react-router-dom";
 
 const FeaturedProperties = () => {
   const [properties, setProperties] = useState([]);
+  const [loading, setLoading] = useState(true);
 
   useEffect(() => {
     let isMounted = true;
@@ -17,6 +18,10 @@ const FeaturedProperties = () => {
         }
       } catch (err) {
         console.log(err);
+      } finally {
+        if (isMounted) {
+          setLoading(false);
+        }
       }
     };
 
@@ -37,12 +42,23 @@ const FeaturedProperties = () => {
       </div>
 
       <div className="grid grid-cols-1 md:grid-cols-3 gap-6">
+        {loading &&
+          Array.from({ length: 6 }).map((_, index) => (
+            <div key={index} className="bg-white rounded shadow p-3">
+              <div className="w-full h-40 rounded bg-gray-200 animate-pulse" />
+              <div className="h-5 bg-gray-200 rounded mt-3 animate-pulse" />
+              <div className="h-4 bg-gray-200 rounded mt-2 w-3/4 animate-pulse" />
+              <div className="h-4 bg-gray-200 rounded mt-2 w-1/2 animate-pulse" />
+            </div>
+          ))}
+
         {properties.map((p) => (
           <div key={p._id} className="bg-white rounded shadow p-3">
             <img
               src={`http://localhost:5000/uploads/${p.image}`}
               alt={p.name}
-              className="w-full h-40 object-cover rounded"
+              loading="lazy"
+              className="w-full h-40 object-cover rounded bg-gray-200"
             />
 
             <h3 className="font-semibold mt-2">{p.name}</h3>

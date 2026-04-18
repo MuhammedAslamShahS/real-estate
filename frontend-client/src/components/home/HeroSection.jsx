@@ -21,6 +21,14 @@ const slides = [
 
 const HeroSection = () => {
   const [index, setIndex] = useState(0);
+  const currentSlide = slides[index];
+
+  useEffect(() => {
+    slides.forEach((slide) => {
+      const img = new Image();
+      img.src = slide.image;
+    });
+  }, []);
 
   // auto change
   useEffect(() => {
@@ -32,23 +40,25 @@ const HeroSection = () => {
   }, []);
 
   return (
-    <div
-      className="h-[90vh] text-white relative overflow-hidden flex items-center justify-center bg-cover bg-center transition-all duration-700"
-      style={{
-        backgroundImage: `url(${slides[index].image})`,
-      }}
-    >
+    <div className="h-[90vh] text-white relative overflow-hidden flex items-center justify-center bg-gray-900">
+      <img
+        src={currentSlide.image}
+        alt=""
+        loading="eager"
+        className="absolute inset-0 w-full h-full object-cover transition-opacity duration-700"
+      />
+
       {/* Overlay */}
       <div className="absolute inset-0 bg-black/50"></div>
 
       {/* CONTENT */}
       <div className="relative z-10 max-w-6xl mx-auto px-6 text-center">
         <h1 className="text-4xl md:text-5xl font-bold mb-4">
-          {slides[index].title}
+          {currentSlide.title}
         </h1>
 
         <p className="text-lg text-gray-200 mb-6">
-          {slides[index].subtitle}
+          {currentSlide.subtitle}
         </p>
 
         <Link

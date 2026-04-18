@@ -33,7 +33,8 @@ const ExpertiseSection = () => {
               <img
                 src="/images/expertise-man.jpg"
                 alt="Expertise"
-                className="w-full h-full object-cover rounded-xl"
+                loading="lazy"
+                className="w-full h-full object-cover rounded-xl bg-gray-200"
               />
             </div>
           </div>

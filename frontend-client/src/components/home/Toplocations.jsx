@@ -11,7 +11,7 @@ const locations = [
     {
         id: 2,
         name: "Puerto Plata",
-        image: "images/Santo-Domingo.jpg",
+        image: "/images/Santo-Domingo.jpg",
         link: "/properties?location=puerto-plata",
     },
     {
@@ -39,7 +39,8 @@ const Toplocations = () => {
                         <img
                             src={locations[0].image}
                             alt={locations[0].name}
-                            className="w-full h-full object-cover transition duration-500 group-hover:scale-105"
+                            loading="lazy"
+                            className="w-full h-full object-cover transition duration-500 group-hover:scale-105 bg-gray-200"
                         />
                         <div className="absolute inset-0 bg-black/20"></div>
                         <h3 className="absolute bottom-6 left-6 text-white text-2xl md:text-4xl font-bold">
@@ -58,7 +59,8 @@ const Toplocations = () => {
                                 <img
                                     src={item.image}
                                     alt={item.name}
-                                    className="w-full h-full object-cover transition duration-500 group-hover:scale-105"
+                                    loading="lazy"
+                                    className="w-full h-full object-cover transition duration-500 group-hover:scale-105 bg-gray-200"
                                 />
                                 <div className="absolute inset-0 bg-black/20"></div>
                                 <h3 className="absolute bottom-6 left-6 text-white text-2xl md:text-3xl font-bold">

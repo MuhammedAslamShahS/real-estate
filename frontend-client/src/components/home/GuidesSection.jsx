@@ -54,7 +54,8 @@ const GuidesSection = () => {
                                 <img
                                     src={guide.image}
                                     alt={guide.title}
-                                    className="w-full h-[360px] object-cover transition duration-500 group-hover:scale-105"
+                                    loading="lazy"
+                                    className="w-full h-[360px] object-cover transition duration-500 group-hover:scale-105 bg-gray-200"
                                 />
                             </div>
 

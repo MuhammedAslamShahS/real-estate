@@ -25,7 +25,8 @@ const CategorySection = () => {
                             <img
                                 src={item.image}
                                 alt={item.label}
-                                className="w-full h-full object-cover opacity-40 group-hover:scale-110 group-hover:opacity-100 transition duration-500"
+                                loading="lazy"
+                                className="w-full h-full object-cover opacity-40 group-hover:scale-110 group-hover:opacity-100 transition duration-500 bg-gray-200"
                             />
 
                             {/* OVERLAY */}
