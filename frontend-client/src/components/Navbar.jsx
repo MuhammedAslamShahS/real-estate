@@ -15,7 +15,7 @@ const Navbar = () => {
         <nav className="flex items-center gap-6">
           <Link to="/">Home</Link>
           <Link to="/properties">Properties</Link>
-          <Link to="/categories">Categories</Link>
+          
 
           {!user ? (
             <>

@@ -23,10 +23,6 @@ const Footer = () => {
             Properties
           </Link>
 
-          <Link to="/categories" className="hover:text-blue-400">
-            Categories
-          </Link>
-
           <Link to="/about" className="hover:text-blue-400">
             About
           </Link>
