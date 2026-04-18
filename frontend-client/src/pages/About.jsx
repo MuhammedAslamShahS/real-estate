@@ -1,3 +1,4 @@
+import Footer from "../components/Footer";
 import Navbar from "../components/Navbar";
 
 const About = () => {
@@ -5,7 +6,7 @@ const About = () => {
     <div className="min-h-screen bg-gray-100">
       <Navbar />
 
-      <div className="max-w-5xl mx-auto p-6">
+      <div className="max-w-7xl min-h-screen mx-auto pt-24">
         <h1 className="text-3xl font-bold mb-4">About Us</h1>
 
         <p className="text-gray-700 leading-7 mb-4">
@@ -23,6 +24,7 @@ const About = () => {
           space — we’ve got you covered.
         </p>
       </div>
+      <Footer/>
     </div>
   );
 };

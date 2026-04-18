@@ -1,82 +1,81 @@
 import React from "react";
+import Button from "../Button";
 import { Link } from "react-router-dom";
 
-const guides = [
+const faqs = [
   {
-    id: 1,
-    title: "Living and investing in Mexico",
-    description: "Everything you need to know about living and investing in Mexico as a foreigner",
-    image: "https://images.unsplash.com/photo-1507525428034-b723cf961d3e",
-    link: "/guides/mexico",
+    question: "How to book a property visit?",
+    answer:
+      "You can book a visit by clicking on the property and selecting 'Schedule Visit' or by contacting our agent directly.",
   },
   {
-    id: 2,
-    title: "Living and investing in the Dominican Republic",
-    description: "Everything you need to know about living and investing in the Dominican Republic as a foreigner",
-    image: "https://images.unsplash.com/photo-1500375592092-40eb2168fd21",
-    link: "/guides/dominican-republic",
+    question: "Do you provide loan assistance?",
+    answer:
+      "Yes, we help connect you with trusted banks and financial partners for home loan support.",
   },
   {
-    id: 3,
-    title: "Living and investing in Italy",
-    description: "Everything you need to know about living and investing in Italy as a foreigner",
-    image: "https://images.unsplash.com/photo-1502602898657-3e91760cbb34",
-    link: "/guides/italy",
+    question: "What documents are required?",
+    answer:
+      "Basic documents include ID proof, address proof, income proof, and bank statements. Our team will guide you step by step.",
   },
   {
-    id: 4,
-    title: "Living and investing in Portugal",
-    description: "Everything you need to know about living and investing in Portugal as a foreigner",
-    image: "https://images.unsplash.com/photo-1491553895911-0055eca6402d",
-    link: "/guides/portugal",
+    question: "What is the difference between rent and lease?",
+    answer:
+      "Rent is usually short-term (monthly), while lease is a long-term agreement with fixed terms and conditions.",
+  },
+  {
+    question: "What is the commission structure?",
+    answer:
+      "Our commission depends on the property type and deal value. We maintain complete transparency with no hidden charges.",
   },
 ];
 
-const GuidesSection = () => {
-    return (
-        <section className="bg-[#f5f5f5] py-16">
-            <div className="max-w-7xl mx-auto">
-                <div className="mb-10">
-                    <h2 className="text-4xl md:text-5xl font-bold text-[#2f2f35] leading-tight mb-5">
-                        Not sure where to start? Check out our international real estate guides
-                    </h2>
+const FAQSection = () => {
+  return (
+    <section className="bg-[#f5f5f5] py-16">
+      <div className="max-w-7xl mx-auto px-4">
+        
+        {/* Heading */}
+        <div className="mb-10">
+          <h2 className="text-4xl font-bold text-gray-600 mb-4">
+            Frequently Asked Questions
+          </h2>
 
-                    <p className="text-lg md:text-2xl text-[#2f2f35] leading-relaxed">
-                        Looking to buy a home abroad? Our real estate guides offer expert advice to help you navigate the
-                        process with confidence.
-                    </p>
-                </div>
+          <p className="text-lg md:text-xl text-[#4b5563] max-w-2xl">
+            Got questions? We’ve got answers. Here are some common queries to help you get started.
+          </p>
+        </div>
 
-                <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-6">
-                    {guides.map((guide) => (
-                        <Link key={guide.id} to={guide.link} className="group block">
-                            <div className="w-[300px] h-[180px] overflow-hidden rounded-2xl mb-4">
-                                <img
-                                    src={guide.image}
-                                    alt={guide.title}
-                                    loading="lazy"
-                                    className="w-full h-[360px] object-cover transition duration-500 group-hover:scale-105 bg-gray-200"
-                                />
-                            </div>
+        {/* FAQ List */}
+        <div className="space-y-4">
+          {faqs.map((item, index) => (
+            <div
+              key={index}
+              className="bg-white rounded-xl p-6 shadow-sm hover:shadow-md transition"
+            >
+              <h3 className="text-lg font-semibold text-[#2f2f35] mb-2">
+                {item.question}
+              </h3>
 
-                            <h3 className="text-2xl font-bold text-[#2f2f35] leading-snug mb-2">{guide.title}</h3>
-
-                            <p className="text-[#4b5563] text-lg leading-relaxed">{guide.description}</p>
-                        </Link>
-                    ))}
-                </div>
-
-                <div className="flex justify-center mt-10">
-                    <Link
-                        to="/guides"
-                        className="bg-[#0156ac] hover:bg-[#004a95] text-white font-semibold text-xl px-8 py-4 rounded-xl transition"
-                    >
-                        Explore all guides
-                    </Link>
-                </div>
+              <p className="text-[#4b5563] leading-7">
+                {item.answer}
+              </p>
             </div>
-        </section>
-    );
+          ))}
+        </div>
+
+        {/* CTA */}
+        <div className="flex justify-center mt-10">
+          <Link to="/contact">
+            <Button className="bg-[#0156ac] hover:bg-[#004a95] text-white font-semibold text-lg px-8 py-3 rounded-xl">
+              Contact Us
+            </Button>
+          </Link>
+        </div>
+
+      </div>
+    </section>
+  );
 };
 
-export default GuidesSection;
+export default FAQSection;

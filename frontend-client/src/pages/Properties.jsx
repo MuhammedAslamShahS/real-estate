@@ -3,6 +3,7 @@ import { useEffect, useState } from "react";
 import { Link, useSearchParams } from "react-router-dom";
 import API from "../api/axios.js";
 import Navbar from "../components/Navbar";
+import Footer from "../components/Footer.jsx";
 
 const Properties = () => {
   const [properties, setProperties] = useState([]);
@@ -44,7 +45,7 @@ const Properties = () => {
     <div className="min-h-screen bg-gray-100">
       <Navbar />
 
-      <div className="max-w-6xl mx-auto p-6">
+      <div className="max-w-7xl mx-auto pt-24">
         <h1 className="text-2xl font-bold mb-4">Properties</h1>
 
         <div className="flex gap-4 mb-6">
@@ -109,6 +110,8 @@ const Properties = () => {
           ))}
         </div>
       </div>
+
+      <Footer/>
     </div>
   );
 };

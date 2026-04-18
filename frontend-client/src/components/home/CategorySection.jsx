@@ -12,7 +12,7 @@ const CategorySection = () => {
     return (
         <div className="bg-white py-12">
             <div className="max-w-7xl mx-auto">
-                <h2 className="text-2xl font-bold mb-6 text-center">Browse by Category</h2>
+                <h2 className="text-2xl font-bold mb-6 text-gray-600">Browse by Category</h2>
 
                 <div className="grid grid-cols-2 md:grid-cols-5 gap-4">
                     {categories.map((item) => (

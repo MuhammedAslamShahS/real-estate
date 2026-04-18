@@ -4,9 +4,9 @@ import Footer from "../components/Footer";
 import HeroSection from "../components/home/HeroSection";
 import FeaturedProperties from "../components/home/FeaturedProperties";
 import CategorySection from "../components/home/CategorySection";
-import ExpertiseSection from "../components/home/ExpertiseSection";
+import ExpertiseSection from "../components/home/ServicesSection";
 import GuidesSection from "../components/home/GuidesSection";
-import Toplocations from "../components/home/Toplocations";
+import Toplocations from "../components/home/WhyChooseUs";
 
 const Home = () => {
     return (

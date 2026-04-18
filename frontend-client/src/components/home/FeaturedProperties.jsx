@@ -39,7 +39,7 @@ const FeaturedProperties = () => {
   return (
     <div className="max-w-7xl mx-auto py-12">
       <div className="flex justify-between items-center mb-6">
-        <h2 className="text-2xl font-bold">Featured Properties</h2>
+        <h2 className="text-2xl font-bold text-gray-600">Featured Properties</h2>
         <Link to="/properties" className="text-blue-600">
           View All
         </Link>

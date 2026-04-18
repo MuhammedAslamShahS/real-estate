@@ -1,3 +1,4 @@
+import Footer from "../components/Footer";
 import Navbar from "../components/Navbar";
 
 const Contact = () => {
@@ -5,7 +6,7 @@ const Contact = () => {
     <div className="min-h-screen bg-gray-100">
       <Navbar />
 
-      <div className="max-w-5xl mx-auto p-6">
+      <div className="max-w-7xl min-h-screen mx-auto pt-24">
         <h1 className="text-3xl font-bold mb-4">Contact Us</h1>
 
         <form className="bg-white p-6 rounded shadow max-w-md">
@@ -31,6 +32,7 @@ const Contact = () => {
           </button>
         </form>
       </div>
+      <Footer/>
     </div>
   );
 };
