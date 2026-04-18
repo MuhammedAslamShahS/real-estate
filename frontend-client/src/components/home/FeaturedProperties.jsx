@@ -14,7 +14,11 @@ const FeaturedProperties = () => {
         const res = await API.get("/properties");
 
         if (isMounted) {
-          setProperties(res.data.data.slice(0, 6));
+          const latestUpdated = [...res.data.data].sort(
+            (a, b) => new Date(b.updatedAt) - new Date(a.updatedAt)
+          );
+
+          setProperties(latestUpdated.slice(0, 6));
         }
       } catch (err) {
         console.log(err);
